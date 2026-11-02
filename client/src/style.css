@@ -196,3 +196,45 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; }
   :root { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Route-specific shells for authentication, administration and unknown paths. */
+.nav-login { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--brand-green); padding: 10px 16px; color: var(--text-primary); font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: .05em; transition: color .18s ease, border-color .18s ease, background-color .18s ease; }
+.nav-login:hover { border-color: var(--brand-gold); color: var(--brand-black); background: var(--brand-gold); }
+
+.auth-layout { min-height: 100svh; padding: 34px 24px; display: grid; place-items: center; align-content: center; gap: 48px; background: radial-gradient(ellipse at 50% 18%, var(--surface-green), var(--brand-black) 62%); }
+.auth-brand, .admin-brand { display: inline-flex; align-items: center; gap: 12px; color: var(--text-primary); }
+.auth-brand img, .admin-brand img { width: 48px; height: 48px; object-fit: contain; }
+.auth-brand > span, .admin-brand > span { display: grid; gap: 3px; font-family: var(--font-display); letter-spacing: .16em; }
+.auth-brand strong, .admin-brand strong { font-size: 13px; }
+.auth-brand small, .admin-brand small { color: var(--text-secondary); font-size: 9px; letter-spacing: .22em; }
+.auth-placeholder, .admin-placeholder, .not-found-page { width: min(100%, 560px); padding: clamp(28px, 6vw, 58px); border: 1px solid rgba(69,119,34,.75); background: color-mix(in srgb, var(--brand-black) 84%, var(--brand-green)); }
+.auth-placeholder h1, .admin-placeholder h1, .not-found-page h1 { margin: 0 0 16px; font-size: clamp(38px, 7vw, 58px); line-height: 1.05; }
+.auth-placeholder > p:not(.eyebrow), .admin-placeholder > p:not(.eyebrow), .not-found-page > p:not(.eyebrow) { margin: 0 0 28px; color: var(--text-secondary); }
+.auth-placeholder .eyebrow, .admin-placeholder .eyebrow, .not-found-page .eyebrow { margin-bottom: 15px; }
+
+.admin-layout { min-height: 100svh; display: grid; grid-template-columns: 250px minmax(0, 1fr); background: var(--brand-black); }
+.admin-sidebar { min-height: 100svh; padding: 28px 20px 22px; display: flex; flex-direction: column; border-right: 1px solid rgba(69,119,34,.7); background: var(--surface-green-soft); }
+.admin-brand { padding: 2px 8px 26px; border-bottom: 1px solid var(--line-subtle); }
+.admin-sidebar__label { margin: 28px 8px 10px; color: var(--brand-gold); font: 600 10px var(--font-display); letter-spacing: .13em; }
+.admin-sidebar__nav { display: grid; gap: 6px; }
+.admin-sidebar__nav a, .admin-sidebar__back { padding: 11px 12px; color: var(--text-secondary); border-left: 2px solid transparent; font-size: 14px; }
+.admin-sidebar__nav a:hover, .admin-sidebar__nav a.is-active { color: var(--text-primary); border-left-color: var(--brand-gold); background: rgba(69,119,34,.24); }
+.admin-sidebar__back { margin-top: auto; border-top: 1px solid var(--line-subtle); border-left: 0; padding: 18px 8px 4px; font-size: 12px; }
+.admin-sidebar__back:hover { color: var(--brand-gold); }
+.admin-main { min-width: 0; padding: clamp(28px, 6vw, 72px); }
+.admin-placeholder { width: min(100%, 760px); border-color: rgba(69,119,34,.55); }
+.not-found-page { min-height: 60vh; margin: 8vh auto; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+
+@media (max-width: 760px) {
+  .site-nav .nav-login { margin-top: 10px; padding: 13px; text-align: center; }
+  .admin-layout { grid-template-columns: 1fr; align-content: start; }
+  .admin-sidebar { min-height: auto; padding: 16px 6%; border-right: 0; border-bottom: 1px solid rgba(69,119,34,.7); }
+  .admin-brand { padding: 0 0 14px; }
+  .admin-brand img { width: 40px; height: 40px; }
+  .admin-sidebar__label { margin: 14px 0 6px; }
+  .admin-sidebar__nav { display: flex; }
+  .admin-sidebar__nav a { padding: 9px 12px; }
+  .admin-sidebar__back { margin-top: 8px; padding: 10px 0 0; }
+  .admin-main { padding: 26px 6%; }
+  .not-found-page { margin: 5vh auto; width: calc(100% - 12%); }
+}
